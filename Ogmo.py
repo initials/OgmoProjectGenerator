@@ -27,7 +27,7 @@ walkThroughHigherDirectories = True 	# do you want to inspect the directories
 										# above images for quicktimes?
 										# setting to true takes longer
 										
-_outputFile = "/Users/initials/developer/SLF/out/out2.oep"										
+_outputFile = "/Users/initials/developer/SLF/ogmo/tempProject.oep"										
 							
 
 #############################################################################################
