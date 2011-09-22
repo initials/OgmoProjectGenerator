@@ -4,19 +4,31 @@ import re
 from PIL import Image
 import shutil
 import random
-
+import time
 
 #############################################################################################
 ############ Set These Before you run this script
 #############################################################################################
 
 
-_width = '640'
-_height = '640'
+_width = '1000'
+_height = '1000'
 										
-_outDir = "C:/Users/User/Documents/My Dropbox/slf/randomLevels"
-newFileNameRandom=random.randint(0,1000000)		
+_outDir = "/Users/initials/developer/SLF/ogmo/randgen"
+newFileNameRandom=time.time()		
 _outFile = _outDir + '/level' + str(newFileNameRandom) +'.oel'
+
+_numBlocks = 5;
+
+_subAreasX = 5;
+_subAreasY = 5;
+
+_subAreaSpaceX=int(_width)/_subAreasX;
+_subAreaSpaceY=int(_height)/_subAreasY;
+
+
+
+
 									
 							
 
@@ -53,37 +65,36 @@ dh.appendChild(ptext)
 solids = doc.createElement("solids")
 project.appendChild(solids)
 
-for i in range(1):
-	new = doc.createElement("rect")
-	new.setAttribute("x", str(i*10))
-	new.setAttribute("y", "10")
-	new.setAttribute("w", "10")
-	new.setAttribute("h", "10")
 
-	solids.appendChild(new)
-	
-	
-	
-RX=-200;
-RY=-200;
-for rxx in range (3):
-	RX+=200
-	RY+=200
+#for i in range(1):
+#	new = doc.createElement("rect")
+#	new.setAttribute("x", str(i*10))
+#	new.setAttribute("y", "10")
+#	new.setAttribute("w", "10")
+#	new.setAttribute("h", "10")
 
-	for yy in range (3):
-		rw = 20;
-		numBlocks = int(3+random.random()*4);
-		maxW = 10;
-		minW = 2;
-		maxH = 8;
-		minH = 1;
+#	solids.appendChild(new)
+	
+	
+	
+RX=0;
+RY=0;
+for rxx in range (_subAreasX):
+	for ryy in range (_subAreasY):
+		RX = rxx*_subAreaSpaceX;
+		RY = ryy*_subAreaSpaceY;		
+		rw = 20;   #20
+		maxW = 10; #10
+		minW = 2;  #2
+		maxH = 8;  #8
+		minH = 1;  #1
 		bx=0;
 		by=0;
 		bw=0;
 		bh=0;
 		check=False;
 		i=0;
-		for i in range(12):
+		for i in range(_numBlocks):
 			#while(not check):
 			bw = minW + random.random()*(maxW-minW);
 			bh = minH + random.random()*(maxH-minH);
